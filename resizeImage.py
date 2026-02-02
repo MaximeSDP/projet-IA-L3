@@ -1,0 +1,11 @@
+from PIL import Image
+
+def resizeImage(i,h,l):
+    try:
+        i = Image.open(str(i))
+        res = i.resize((h, l))
+        return res
+    except:
+        print(f"Image non trouvé")
+
+resizeImage("./Init/Mer/838s.jpg",300,300)
