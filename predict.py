@@ -1,6 +1,5 @@
 from sklearn.naive_bayes import GaussianNB
 
-import computeHisto
-
-def predict(image_path, classifieur : GaussianNB):
-    return classifieur.predict(computeHisto.computeHisto(image_path))
+def predictFromHisto(S, model : GaussianNB):
+    for s in S:
+        s.y_predicted_class = model.predict(s.X_histo)
