@@ -2,6 +2,7 @@ from os import listdir
 from os.path import isfile, join
 
 import resizeImage
+import computeHisto
 
 
 class ImageData:
@@ -28,11 +29,10 @@ def buildSampleFromPath(path1, path2):
         S.append(image)
 
     for s in S:
-        s.resized_image = resizeImage.resizeImage(s.name_path, 1080, 1920)
+        s.resized_image = resizeImage.resizeImage(s.name_path, 1920, 1080)
+        s.X_histo = computeHisto.computeHisto(s.name_path)
 
     return S
 
 
 S = buildSampleFromPath('Init/Mer', 'Init/Ailleurs')
-for image in S:
-    print(image.resized_image)
