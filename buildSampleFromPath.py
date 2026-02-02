@@ -14,14 +14,14 @@ class ImageData:
 def buildSampleFromPath(path1, path2):
     sea_path = [f for f in listdir(path1) if isfile(join(path1, f))]
     other_path = [f for f in listdir(path2) if isfile(join(path2, f))]
-    all_images = []
+    S = []
 
     for i in sea_path:
-        all_images.append(ImageData(i, 1))
+        S.append(ImageData(i, 1))
     for i in other_path:
-        all_images.append(ImageData(i, -1))
+        S.append(ImageData(i, -1))
 
-    return all_images
+    return S
 
 
 S = buildSampleFromPath('Init/Mer', 'Init/Ailleurs')
