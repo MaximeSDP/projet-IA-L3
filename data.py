@@ -1,23 +1,18 @@
-from PIL import Image
 import pandas as pd
-import numpy as np
-from sklearn import datasets
-from buildSampleFromPath  import buildSampleFromPath
+from buildSampleFromPath import buildSampleFromPath
 
 def createDataset(listImage):
-   
-    X = []
-    y = []
-    for image in listImage :
-        X.append(image.X_histo)
-        y.append(image.y_predicted_class)
+   try :
+        X = []
+        y = []
+        for image in listImage :
+            X.append(image.X_histo)
+            y.append(image.y_true_class)
 
-    df = (pd.DataFrame(X),pd.DataFrame(y))
+        df = (pd.DataFrame(X),y)
 
-    return df
+        return df
+   except:
+       print("erreur dans la création du dataset")
 
-
-S = buildSampleFromPath('Init/Mer', 'Init/Ailleurs')
-print(S)
-data = createDataset(buildSampleFromPath('Init/Mer', 'Init/Ailleurs'))
-print(data)
+#print(createDataset(buildSampleFromPath('Init/Mer', 'Init/Ailleurs'))[0])
