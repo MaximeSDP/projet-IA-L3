@@ -2,6 +2,12 @@ import pandas as pd
 from buildSampleFromPath import buildSampleFromPath
 
 def createDataset(listImage):
+   """
+   Docstring for createDataset
+   
+   :param listImage: Description
+   """
+   
    try :
         X = []
         y = []
@@ -15,4 +21,5 @@ def createDataset(listImage):
    except:
        print("erreur dans la création du dataset")
 
-#print(createDataset(buildSampleFromPath('Init/Mer', 'Init/Ailleurs'))[0])
+if __name__ == "__main__":
+   print(createDataset(buildSampleFromPath('Init/Mer', 'Init/Ailleurs'))[0])

@@ -8,4 +8,5 @@ def resizeImage(i,h,l):
     except:
         print(f"Image non trouvé")
 
-#resizeImage("./Init/Mer/838s.jpg",300,300)
+if __name__ == "__main__":
+    resizeImage("./Init/Mer/838s.jpg",300,300)

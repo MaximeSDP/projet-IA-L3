@@ -20,4 +20,3 @@ print("Resultat trouvé :", predict)
 
 print(f"Pourcentage de réussite empirique : {(1-error_empi(y_train, predict))*100} %")
 print(f"Pourcentage de réussite réel : {(1-error_real(GaussianNB(), X_train, y_train))*100} %")
-

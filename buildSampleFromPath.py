@@ -3,16 +3,7 @@ from os.path import isfile, join
 
 from resizeImage import resizeImage
 from computeHisto import computeHisto
-
-
-class ImageData:
-
-    def __init__(self, name_path, y_true_class):
-        self.name_path = name_path
-        self.resized_image = None
-        self.X_histo = None
-        self.y_true_class = y_true_class
-        self.y_predicted_class = None
+from imageData import ImageData
 
 
 def buildSampleFromPath(path1, path2):
@@ -34,5 +25,5 @@ def buildSampleFromPath(path1, path2):
 
     return S
 
-
-#S = buildSampleFromPath('Init/Mer', 'Init/Ailleurs')
+if __name__ == "__main__":
+   S = buildSampleFromPath('Init/Mer', 'Init/Ailleurs')

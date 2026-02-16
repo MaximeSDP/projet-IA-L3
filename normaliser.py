@@ -26,6 +26,7 @@ def normaliser(dataset):
         print(f"Erreur lors de la normalisation : {err}")
         return dataset       
 
+if __name__ == "__main__":
+    dataset = createDataset(buildSampleFromPath('Init/Mer', 'Init/Ailleurs'))
+    print(normaliser(dataset))
     
-dataset = createDataset(buildSampleFromPath('Init/Mer', 'Init/Ailleurs'))
-print(normaliser(dataset))
