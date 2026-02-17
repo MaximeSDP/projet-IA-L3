@@ -9,7 +9,9 @@ from sklearn.tree import DecisionTreeClassifier
 
 if __name__ == "__main__":
     """
-    
+    utilisations: 
+    - test moyenne sur x tentative : generateStats(config,x) ou x est le nombre de test
+    - test une seule fois : createPipeline(config)
     """
     extracteurs = [ColorHistoExtractor()]
     config = Econfig(path_correct="data/Mer",
