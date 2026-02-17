@@ -15,10 +15,6 @@ def createDataset(listImage: list[ImageData],extractors : list[ex.Extractor]):
             Y.append(image.y_true_class)
 
         X = np.array(X)
-        
-        # Standardisation (0 à 1)
-        scaler = StandardScaler()
-        X = scaler.fit_transform(X)
 
         return pd.DataFrame(X), np.array(Y)
         

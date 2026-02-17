@@ -6,7 +6,7 @@ from src.imageProcessing.computeHisto import computeHisto
 from src.dataSet.imageData import ImageData
 from src.imageProcessing.contourImage import imageEdge
 
-def buildSampleFromPath(path1: str, path2: str):
+def buildSampleFromPath(path1: str, path2: str,sizeImage : tuple = (300,300)):
     sea_path = [f for f in listdir(path1) if isfile(join(path1, f))]
     other_path = [f for f in listdir(path2) if isfile(join(path2, f))]
     listImageData : list[ImageData]= []
@@ -20,7 +20,7 @@ def buildSampleFromPath(path1: str, path2: str):
         listImageData.append(image)
 
     for image in listImageData:
-        image.resized_image = resizeImage(image.name_path, 1080, 1920)
+        image.resized_image = resizeImage(image.name_path, sizeImage[1], sizeImage[0])
         image.X_histo = computeHisto(image.resized_image)
         image.X_gradient = imageEdge(image)
     return listImageData
