@@ -1,6 +1,6 @@
 ## Résultats :
 
-date actualisée : 02/17/2026
+date actualisée : 17/02/2026
 
 DecisionTree : 
 
@@ -55,4 +55,21 @@ Moyenne réussite réelle : 59.74999999999999%
   • algo : DecisionTreeClassifier(max_depth=2)
   • train_size : 0.8
   • size_Image : (300, 300)
+  • PCA_Active : True
+
+
+18/02/26 :
+
+SVM :
+========================================
+Moyenne réussite empirique : 93.954802259887%
+Moyenne réussite réelle : 92.34688128772636%
+========================================
+=== Configuration de l'IA ===
+  • path_correct : dataSet/data/train/sea
+  • path_incorrect : data/Ailleurs
+  • extractors : [<src.extractor.colorHistoExtractor.ColorHistoExtractor object at 0x00000236BFF76510>, <src.extractor.HOGExtractor.HOGExtractor object at 0x00000236F66D8DD0>, <src.extractor.LBPExtractor.LBPExtractor object at 0x00000236F85F6990>, <src.extractor.LBPExtractor.LBPExtractor object at 0x00000236917742D0>]
+  • algo : SVC(C=10.0, class_weight='balanced')
+  • train_size : 0.8
+  • size_Image : (150, 150)
   • PCA_Active : True

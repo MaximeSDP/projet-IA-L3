@@ -1,12 +1,19 @@
-from PIL import Image
+from PIL import Image, ImageOps
 
-def resizeImage(i,h,l):
+def resizeImage(chemin_image, l, h):
     try:
-        i = Image.open(str(i)).convert("RGB")
-        res = i.resize((h, l))
+
+        img = Image.open(str(chemin_image)).convert("RGB")
+        res = ImageOps.pad(img, (l, h), color=(0, 0, 0))
+        
         return res
-    except:
-        print(f"Image non trouvé")
+    except Exception as e:
+        print(f"Erreur avec l'image {chemin_image} : {e}")
+        return None
 
 if __name__ == "__main__":
-    resizeImage("./Init/Mer/838s.jpg",300,300)
+
+    img_redimensionnee = resizeImage("./data/Mer/838s.jpg", 300, 300)
+
+    if img_redimensionnee:
+        img_redimensionnee.show()

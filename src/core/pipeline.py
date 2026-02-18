@@ -25,8 +25,9 @@ def createPipeline(config : Econfig):
     X_test = scaler.transform(X_test)
 
     #compression
+    pca = None
     if config.PCA_Active:
-        pca = PCA(n_components=0.99)
+        pca = PCA(n_components=300)
         X_train = pca.fit_transform(X_train)
         X_test = pca.transform(X_test)
 
@@ -40,4 +41,8 @@ def createPipeline(config : Econfig):
     err_emp = (1-error_empi(Y_test, predict))
     err_real = (1-error_real(config.algo, X_test, Y_test))
     
-    return err_emp,err_real
+    return {"model":model,
+            "emp":err_emp,
+            "real":err_real,
+            "pca":pca,
+            "scaler":scaler}

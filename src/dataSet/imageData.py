@@ -1,6 +1,6 @@
 class ImageData:
 
-    def __init__(self, name_path, y_true_class):
+    def __init__(self, name_path, y_true_class = 0):
         self.name_path = name_path
         self.resized_image = None
         self.X_histo = None

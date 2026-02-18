@@ -11,7 +11,9 @@ def generateStats(config: ExperimentConfig, nbTry = 20):
 
     for i in range(nbTry):
         print(f"test ({i+1}/{nbTry})")
-        emp,real = createPipeline(config)
+        dictInfos = createPipeline(config)
+        emp = dictInfos["emp"]
+        real = dictInfos["real"]
         list_emp.append(emp)
         list_real.append(real)
         
@@ -23,3 +25,5 @@ def generateStats(config: ExperimentConfig, nbTry = 20):
     print(f"Moyenne réussite réelle : {real_av*100}%")
     print("========================================")
     print(config)
+
+    return dictInfos
