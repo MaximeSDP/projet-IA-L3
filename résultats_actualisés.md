@@ -73,3 +73,30 @@ Moyenne réussite réelle : 92.34688128772636%
   • train_size : 0.8
   • size_Image : (150, 150)
   • PCA_Active : True
+
+
+  19/02/2026:
+
+  SVM + gridsearch
+
+  ========== GridSearchCV ==========
+  Meilleurs paramètres : {'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}
+  Meilleur score CV (balanced_accuracy) : 90.83%
+==================================
+
+
+========================================
+Erreur empirique (train) : 3.02%
+Erreur réelle (CV train) : 9.19%
+Accuracy test            : 91.48%
+========================================
+=== Configuration de l'IA ===
+  • path_correct : data/train/positives
+  • path_incorrect : data/train/negatives
+  • extractors : [<src.extractor.colorHistoExtractor.ColorHistoExtractor object at 0x00000207AAB0A590>, <src.extractor.HSVHistoExtractor.HSVHistoExtractor object at 0x0000020790D2FB90>, <src.extractor.HOGExtractor.HOGExtractor object at 0x00000207AAAFAAD0>, <src.extractor.multiScaleLBPExtractor.MultiScaleLBPExtractor object at 0x00000207AAAFA690>]
+  • algo : SVC(class_weight='balanced')
+  • train_size : 0.8
+  • size_Image : (150, 150)
+  • PCA_Active : True
+  • grid_search_active : True
+  • grid_search_params : {'C': [0.1, 1, 10], 'kernel': ['linear', 'rbf'], 'gamma': ['scale']}

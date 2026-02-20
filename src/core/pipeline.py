@@ -7,6 +7,7 @@ from src.dataSet.buildSampleFromPath import buildSampleFromPath
 from src.dataSet.data import createDataset
 from src.models.fit import fitFromHisto
 from src.models.predict import predictFromHisto
+from src.algo.gridSearch import run_grid_search
 from utils.metrics.errorEmpi import error_empi
 from utils.metrics.errorReal import error_real
 
@@ -27,22 +28,32 @@ def createPipeline(config : Econfig):
     #compression
     pca = None
     if config.PCA_Active:
-        pca = PCA(n_components=300)
+        pca = PCA(n_components=config.PCA_n_components)
         X_train = pca.fit_transform(X_train)
         X_test = pca.transform(X_test)
 
     #train
-    model = fitFromHisto(X_train, Y_train, config.algo)
-    predict = predictFromHisto(X_test, model)
+    if config.grid_search_active:
+        grid_result = run_grid_search(
+            algo=config.algo,
+            X_train=X_train,
+            Y_train=Y_train,
+            param_grid=config.grid_search_params,
+        )
+        model = grid_result["best_model"]
+    else:
+        model = fitFromHisto(X_train, Y_train, config.algo)
+    predict_test = predictFromHisto(X_test, model)
+    predict_train = predictFromHisto(X_train, model)
 
-    #print("classes (Test) :", Y_test)
-    #print("Prédictions (Test)    :", predict)
-
-    err_emp = (1-error_empi(Y_test, predict))
-    err_real = (1-error_real(config.algo, X_test, Y_test))
+    #Stats
+    err_emp = error_empi(Y_train, predict_train)
+    err_real = error_real(model, X_train, Y_train)
+    acc_test = 1 - error_empi(Y_test, predict_test)
     
     return {"model":model,
-            "emp":err_emp,
-            "real":err_real,
+            "err_emp":err_emp,
+            "err_real":err_real,
+            "acc_test":acc_test,
             "pca":pca,
             "scaler":scaler}

@@ -2,27 +2,14 @@ from .pipeline import createPipeline
 from src.core.configs import ExperimentConfig
 
 
-def generateStats(config: ExperimentConfig, nbTry = 20):
-    emp_av : float
-    real_av: float
+def generateStats(config: ExperimentConfig):
 
-    list_emp = []
-    list_real = []
-
-    for i in range(nbTry):
-        print(f"test ({i+1}/{nbTry})")
-        dictInfos = createPipeline(config)
-        emp = dictInfos["emp"]
-        real = dictInfos["real"]
-        list_emp.append(emp)
-        list_real.append(real)
-        
-    emp_av=(sum(list_emp)/len(list_emp))
-    real_av= (sum(list_real)/len(list_real))
-
+    dictInfos = createPipeline(config)
+    print("\n")
     print("========================================")
-    print(f"Moyenne réussite empirique : {emp_av*100}%")
-    print(f"Moyenne réussite réelle : {real_av*100}%")
+    print(f"Erreur empirique (train) : {dictInfos['err_emp']*100:.2f}%")
+    print(f"Erreur réelle (CV train) : {dictInfos['err_real']*100:.2f}%")
+    print(f"Accuracy test            : {dictInfos['acc_test']*100:.2f}%")
     print("========================================")
     print(config)
 
