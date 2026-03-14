@@ -5,5 +5,3 @@ class Extractor(ABC):
     @abstractmethod
     def extract(self, image_data):
         pass
-
-    

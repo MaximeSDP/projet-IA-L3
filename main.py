@@ -1,3 +1,5 @@
+import numpy as np
+
 from src.extractor.colorHistoExtractor import ColorHistoExtractor
 from src.extractor.gradientExtractor import GradientExtractor
 from src.extractor.HOGExtractor import HOGExtractor
@@ -11,6 +13,7 @@ from src.core.stats import generateStats
 from src.core.predictImage import predictImage
 from src.core.predictImages import predict_on_folders
 from src.algo.algoritms import get_algorithm
+from src.core.exportTxt import export_predictions_txt
 
 if __name__ == "__main__":
     """
@@ -18,7 +21,7 @@ if __name__ == "__main__":
     - test moyenne sur x tentative : generateStats(config,x) ou x est le nombre de test
     - test une seule fois : createPipeline(config)
     """
-    extracteurs = [ColorHistoExtractor(),HSVHistoExtractor(),HOGExtractor(),MultiScaleLBPExtractor()]
+    extracteurs = [HSVHistoExtractor(),HOGExtractor(),LBPExtractor()]
     config = Econfig(path_correct="data/train/positives",
                      path_incorrect="data/train/negatives",
                      extractors= extracteurs,
@@ -27,13 +30,17 @@ if __name__ == "__main__":
                      PCA_Active=True,
                      grid_search_active=True,
                      grid_search_params={
-                         "C": [0.1, 1, 10],
+                         "C": [1],
                          "kernel": ["linear", "rbf"],
                          "gamma": ["scale"],
                      },
-                     size_Image=(150,150)
+                     size_Image=(128,128)
                      )
-    infos = generateStats(config)
+    
+    # True  = Entraînement sur 80% de A, Test sur les 20% restants de A.
+    # False = Entraînement sur 100% de A, Test sur le dataset B.
+    USE_SPLIT = False    
+    infos = generateStats(config, use_split=USE_SPLIT)
 
     result = predict_on_folders("data/test/positives","data/test/negatives",infos["model"], extracteurs,config,infos["scaler"],infos['pca'])
     print(f"\n=== Résultats sur dataset externe ===")
@@ -41,6 +48,20 @@ if __name__ == "__main__":
     print(f"Balanced Accuracy : {result['balanced_accuracy']*100:.2f}%")
     print(f"Matrice de confusion :\n{result['confusion_matrix']}")
     print(f"\n{result['report']}")
+
+ 
+
+    export_predictions_txt(
+    filename="LAMNS.txt",
+    authors="Maxime Scotto, ARGUIMBAU Lucas (LAMS)",
+    algorithm="SVM (Support Vector Machine)",
+    hyperparams="kernel=rbf, C=10, gamma=scale",
+    descriptors="HOG + HSV Histogram + LBP",
+    predictions=result["predictions"],
+    err_emp=infos["err_emp"],
+    err_real=infos["err_real"]
+    )
+    
 
     """
     while True:

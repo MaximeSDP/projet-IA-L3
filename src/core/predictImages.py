@@ -56,7 +56,16 @@ def predict_on_folders(path_positives: str, path_negatives: str,
     cm = confusion_matrix(Y, y_pred)
     report = classification_report(Y, y_pred, digits=3)
 
+    predictions = []
+
+    predictions = []
+
+    for img, pred in zip(data, y_pred):
+        img_name = os.path.basename(img.name_path)
+        predictions.append((img_name, pred))
+
     return {
+        "predictions": predictions,
         "accuracy": acc,
         "balanced_accuracy": bacc,
         "confusion_matrix": cm,
