@@ -298,7 +298,6 @@ def predict_on_single_folder(path_folder: str,
 def generateStats(config: Econfig, use_split):
     dictInfos = createPipeline(config, use_split)
     
-    # On récupère les valeurs proprement, si elles n'existent pas on met 0
     err_emp = dictInfos.get('err_emp', 0)
     err_real = dictInfos.get('err_real', 0)
     acc_test = dictInfos.get('acc_test', 0)
