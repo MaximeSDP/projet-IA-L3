@@ -16,11 +16,15 @@ def createDataset(listImage: list[ImageData],extractors : list[ex.Extractor]):
 
         X = np.array(X)
 
+
+        print("Dimension des features :", X.shape)
         return pd.DataFrame(X), np.array(Y)
         
     except Exception as e:
         print(f"Erreur dans la création du dataset : {e}")
         return pd.DataFrame(), np.array([])
+
+        
 
 if __name__ == "__main__":
    print(createDataset(buildSampleFromPath('data/Mer', 'data/Ailleurs'))[0])

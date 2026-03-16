@@ -11,7 +11,7 @@ class ExperimentConfig:
     train_size: float = 0.8 # 0.8 : On train sur 80% des data
     size_Image: tuple = (128,128)
     PCA_Active: bool = True
-    PCA_n_components=0.98
+    PCA_n_components= 0.80
     grid_search_active: bool = False  
     grid_search_params: dict = None 
 

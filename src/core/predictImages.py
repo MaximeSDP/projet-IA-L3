@@ -73,3 +73,67 @@ def predict_on_folders(path_positives: str, path_negatives: str,
         "y_true": Y,
         "y_pred": y_pred,
     }
+
+import os
+import shutil
+from src.dataSet.buildSampleFromPath import buildSampleFromPath
+from src.dataSet.data import createDataset
+
+def predict_on_single_folder(path_folder: str, 
+                             model, extractors, config, 
+                             scaler=None, pca=None, 
+                             output_dir="results/predictions"):
+    """
+    Prend un seul dossier en entrée (mélangé) et génère les prédictions.
+    """
+
+    data = buildSampleFromPath(path_folder, path_folder, config.size_Image)
+    
+
+    unique_data = []
+    seen = set()
+    for img in data:
+        if img.name_path not in seen:
+            unique_data.append(img)
+            seen.add(img.name_path)
+
+    X, _ = createDataset(unique_data, extractors)
+
+    if scaler is not None:
+        X = scaler.transform(X)
+
+    if pca is not None:
+        X = pca.transform(X)
+
+    y_pred = model.predict(X)
+
+    categories = {
+        "Mer_Detectee": [],    # Pred = 1
+        "Ailleurs_Detecte": [] # Pred = -1
+    }
+
+    predictions = []
+    for img, pred in zip(unique_data, y_pred):
+        img_name = os.path.basename(img.name_path)
+        predictions.append((img_name, pred))
+        
+        if pred == 1:
+            categories["Mer_Detectee"].append(img.name_path)
+        else:
+            categories["Ailleurs_Detecte"].append(img.name_path)
+
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+        
+    for cat, paths in categories.items():
+        cat_dir = os.path.join(output_dir, cat)
+        os.makedirs(cat_dir, exist_ok=True)
+        for p in paths:
+            shutil.copy2(p, cat_dir)
+        print(f"  {cat} : {len(paths)} images déplacées.")
+
+    return {
+        "predictions": predictions,
+        "y_pred": y_pred,
+        "filenames": [p[0] for p in predictions]
+    }

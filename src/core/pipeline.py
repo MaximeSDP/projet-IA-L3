@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
@@ -11,6 +12,7 @@ from src.algo.gridSearch import run_grid_search
 from utils.metrics.errorEmpi import error_empi
 from utils.metrics.errorReal import error_real
 from src.imageProcessing.FP import afficher_faux_positifs
+from sklearn.metrics import classification_report
 
 def createPipeline(config: Econfig, use_split=True):
     #Chargement du Dataset A
@@ -39,8 +41,10 @@ def createPipeline(config: Econfig, use_split=True):
     if config.PCA_Active:
         pca = PCA(n_components=config.PCA_n_components)
         X_train = pca.fit_transform(X_train)
+        print("Dimension après PCA :", X_train.shape)
         if X_test is not None:
             X_test = pca.transform(X_test)
+
 
     if config.grid_search_active:
         grid_result = run_grid_search(
