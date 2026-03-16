@@ -1,4 +1,4 @@
-# Maxime Scotto, ARGUIMBAU Lucas (LAMS)
+# Maxime Scotto, ARGUIMBAU Lucas, MAURIN Lucas (LAMS)
 # SVM (Support Vector Machine)
 # kernel=rbf, C=1, gamma=scale
 # HOG + HSV Histogram + LBP

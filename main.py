@@ -1,20 +1,9 @@
 import numpy as np
 
-from src.extractor.colorHistoExtractor import ColorHistoExtractor
-from src.extractor.gradientExtractor import GradientExtractor
-from src.extractor.HOGExtractor import HOGExtractor
-from src.extractor.LBPExtractor import LBPExtractor
-from src.extractor.multiScaleLBPExtractor import MultiScaleLBPExtractor
-from src.extractor.HSVHistoExtractor import HSVHistoExtractor
-from src.extractor.spatialColorExtractor import SpatialColorExtractor
-from src.core.configs import ExperimentConfig as Econfig
-from src.core.pipeline import createPipeline
-from src.core.stats import generateStats
-from src.core.predictImage import predictImage
-from src.core.predictImages import predict_on_folders
-from src.algo.algoritms import get_algorithm
-from src.core.exportTxt import export_predictions_txt
-from src.core.predictImages import predict_on_single_folder
+from src.pipeline import Econfig, get_algorithm, generateStats, export_predictions_txt
+from src.build import LBPExtractor, HOGExtractor, HSVHistoExtractor
+from src.pipeline import predict_on_single_folder
+
 
 
 if __name__ == "__main__":
