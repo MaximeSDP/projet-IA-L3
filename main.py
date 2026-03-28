@@ -1,8 +1,9 @@
 import numpy as np
 
-from src.pipeline import Econfig, get_algorithm, generateStats, export_predictions_txt
-from src.build import LBPExtractor, HOGExtractor, HSVHistoExtractor
-from src.pipeline import predict_on_single_folder
+from src.config import Econfig
+from src.models import get_algorithm
+from src.features import LBPExtractor, HOGExtractor, HSVHistoExtractor
+from src.pipeline import predict_on_single_folder, predict_on_folders, generateStats
 
 
 
@@ -21,26 +22,28 @@ if __name__ == "__main__":
                      PCA_Active=True,
                      grid_search_active=True,
                      grid_search_params = {
-                        "C": [0.1, 1, 10, 100],
+                        "C": [0.1, 1, 10],
                         "kernel": ["rbf"],
                         "gamma": ["scale",0.1,0.01]
                     },
-                     size_Image=(128,128)
+                     size_Image=(128,128),
+                     rotationImage = True,
+                     randomRotation = True,
+                     angleRotation = [90,180,270]
                      )
     
     # True  = Entraînement sur 80% de A, Test sur les 20% restants de A.
     # False = Entraînement sur 100% de A, Test sur le dataset B.
-    USE_SPLIT = False    
+    USE_SPLIT = True    
     infos = generateStats(config, use_split=USE_SPLIT)
 
-    result = predict_on_single_folder(
-        "cc2/DataCC2", 
+    result = predict_on_folders("data/test/positives","data/test/negatives", 
         infos["model"], 
         extracteurs, 
         config, 
         infos["scaler"], 
         infos['pca']
-    )
+        )
 
     print(f"\n=== Prédictions terminées ===")
     print(f"Nombre total d'images traitées : {len(result['predictions'])}")
