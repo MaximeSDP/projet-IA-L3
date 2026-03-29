@@ -1,128 +1,102 @@
 # Maxime Scotto, ARGUIMBAU Lucas, MAURIN Lucas (LAMS)
 # SVM (Support Vector Machine)
-# kernel=rbf, C=1, gamma=scale
-# HOG + HSV Histogram + LBP
-1003.jpg +1
-1236.jpg +1
-1251.jpg +1
-1277.jpg +1
-1307.jpg +1
-1349.jpg +1
-165.jpg +1
-1696.jpg +1
-1709.jpg +1
-1712.jpg +1
-174.jpg +1
-1880.jpg +1
-20072.jpg +1
-20076.jpg +1
-20077.jpg +1
-20081.jpg +1
-20099.jpg +1
-20106.jpg +1
-20112.jpg +1
-20114.jpg +1
-20115.jpg +1
-20124.jpg +1
-20138.jpg +1
-20148.jpg +1
-20165.jpg +1
-20167.jpg +1
-20168.jpg +1
-20170.jpg +1
-20171.jpg +1
-20172.jpg +1
-20185.jpg +1
-20190.jpg +1
-20212.jpg +1
-20236.jpg +1
-20240.jpg +1
-20247.jpg +1
-20255.jpg -1
-2192.jpg +1
-2214.jpg +1
-2412.jpg +1
-25.jpg +1
-2628.jpg +1
-2640.jpg +1
-2937.jpg +1
-2941.jpg +1
-3235.jpg +1
-3238.jpg +1
-3302.jpg +1
-3514.jpg +1
-582.jpg +1
-6.jpg +1
-641.jpg +1
-65.jpg +1
-666.jpg +1
-670.jpg +1
-687.jpg +1
-7.jpg +1
-916.jpg +1
-934.jpg +1
-936.jpg +1
-986.jpg +1
-11557.jpg +1
-11614.jpg +1
-120.jpg +1
-12193.jpg +1
-122.jpg +1
-12223 - Copie.jpg -1
-12265 - Copie.jpg -1
-12451 - Copie.jpg -1
-12462 - Copie.jpg +1
-12500 - Copie.jpg -1
-12544 - Copie.jpg +1
-12617 - Copie.jpg +1
-12649 - Copie.jpg -1
-12734 - Copie.jpg -1
-12741 - Copie.jpg -1
-1332 - Copie.jpg +1
-153.jpg +1
-155.jpg -1
-1622 - Copie.jpg -1
-17.jpg +1
-1760 - Copie.jpg +1
-1877 - Copie.jpg +1
-2104 - Copie.jpg -1
-2108 - Copie.jpg +1
-2605.jpg +1
-2609.jpg -1
-2615.jpg +1
-2618.jpg +1
-2635.jpg +1
-276.jpg +1
-32.jpg +1
-378.jpg +1
-395.jpg +1
-402.jpg +1
-415.jpg +1
-42.jpg +1
-459.jpg +1
-480.jpg +1
-500.jpg +1
-518.jpg +1
-519.jpg +1
-5302 - Copie.jpg +1
-5324 - Copie.jpg -1
-5343 - Copie.jpg +1
-5798 - Copie.jpg -1
-5805 - Copie.jpg -1
-7854.jpg -1
-7873.jpg -1
-7874.jpg +1
-7886.jpg -1
-7899.jpg +1
-7916.jpg -1
-7932.jpg +1
-7940.jpg -1
-7947.jpg -1
-8183.jpg -1
-835 - Copie.jpg +1
-8545.jpg -1
-8737.jpg -1
-8913.jpg -1
-8984.jpg +1
-# EE = 0.05
-# ER = 0.10
+# kernel=rbf, C=5, gamma=scale
+# HOG + HSV + LBP
+09hy.jpg -1
+bbbj66.jpg +1
+bbhhy.jpg -1
+btr.jpg -1
+dden.jpg +1
+dg.jpeg +1
+eraq.jpg +1
+gotya.jpeg +1
+grate.jpg +1
+hg.jpeg +1
+hounn34.jpg +1
+hu.jpeg +1
+ksnw5.jpg +1
+kuja1.jpg -1
+kwqq2g.jpeg -1
+lkpa.jpg +1
+loupiz.jpeg +1
+mc76.jpg +1
+mhst.jpg +1
+mpha44w.jpg +1
+mpzva.jpg +1
+njuu.jpg -1
+oohh.jpg -1
+phao.JPG +1
+pooi.jpeg +1
+ppa11.jpg -1
+q10.jpeg +1
+q11.jpeg +1
+q12.jpeg +1
+q7.jpeg +1
+q8.jpeg +1
+q9.jpeg +1
+rddq.jpg +1
+sm7r.jpg +1
+spme.jpg +1
+sql.jpg +1
+t1.jpeg +1
+tptp.jpg -1
+tr0mp.jpg +1
+ut.jpeg +1
+uu.jpeg +1
+wtgt1n.jpg +1
+ww.jpeg -1
+wxaa.jpeg +1
+xs.jpeg +1
+y6.jpeg -1
+youpi.jpg -1
+za.jpeg +1
+zd.jpeg +1
+zq.jpeg -1
+bezss.JPG -1
+cCx9.jpg -1
+ct.jpeg -1
+cxvhyy.jpg -1
+derz.jpg -1
+dfe.jpg -1
+do.jpeg -1
+dspv6.jpg +1
+fe.jpeg -1
+ft.jpeg -1
+gaqll.jpg -1
+groby.jpg +1
+hshs2.jpg -1
+ju.jpeg -1
+kp0x2.jpg -1
+lityn.jpg -1
+ljuucxs.jpg +1
+loab.jpg -1
+lp.jpeg -1
+mdouu.jpeg -1
+mlpp.jpg -1
+mm.jpeg -1
+nirrz.jpg -1
+nwghg.jpg -1
+nxooz.jpg -1
+nz.jpeg -1
+pm09.jpg -1
+ppp08.jpg +1
+ppqgq.jpg -1
+q1.jpeg -1
+q2.jpeg -1
+q3.jpeg -1
+q4.jpeg -1
+q5.jpeg -1
+q6.jpeg -1
+se.jpeg +1
+sqzz.jpg -1
+swuia.jpg -1
+tu.jpeg -1
+vbfg.JPG -1
+vvZ1.jpg +1
+w0.jpg -1
+wmzp.jpg -1
+wq.jpeg -1
+wsqwx.jpg -1
+xsoua.jpg -1
+# EE = 0.00
+# ER = 0.09

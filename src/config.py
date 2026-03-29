@@ -10,7 +10,7 @@ class Econfig:
     train_size: float = 0.8  # 0.8 : On train sur 80% des data
     size_Image: tuple = (128, 128)
     PCA_Active: bool = True
-    PCA_n_components: float = 0.80
+    PCA_n_components: float = 0.85
     grid_search_active: bool = False
     grid_search_params: dict = None
     rotationImage: bool = False

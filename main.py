@@ -22,13 +22,13 @@ if __name__ == "__main__":
                      PCA_Active=True,
                      grid_search_active=True,
                      grid_search_params = {
-                        "C": [0.1,0.5, 1],
+                        "C": [0.1,0.5, 1, 5],
                         "kernel": ["rbf"],
                         "gamma": ["scale",0.1,0.01,1,2]
                     },
                      size_Image=(128,128),
-                     rotationImage = True,
-                     randomRotation = True,
+                     rotationImage = False,
+                     randomRotation = False,
                      angleRotation = [90,180,270]
                      )
     
@@ -37,7 +37,8 @@ if __name__ == "__main__":
     USE_SPLIT = False    
     infos = generateStats(config, use_split=USE_SPLIT)
 
-    result = predict_on_folders("data/test/positives","data/test/negatives", 
+    
+    result = predict_on_folders("CC2_trié/positives","CC2_trié/negatives", 
         infos["model"], 
         extracteurs, 
         config, 
@@ -61,12 +62,43 @@ if __name__ == "__main__":
         filename="LAMNS.txt",
         authors="Maxime Scotto, ARGUIMBAU Lucas, MAURIN Lucas (LAMS)",
         algorithm="SVM (Support Vector Machine)",
-        hyperparams="kernel=rbf, C=1, gamma=scale",
-        descriptors="HOG + HSV Histogram + LBP",
+        hyperparams="kernel=rbf, C=5, gamma=scale",
+        descriptors="HOG + HSV + LBP",
         predictions=result["predictions"],
         err_emp=infos["err_emp"],
         err_real=infos["err_real"]
     )
+    
+
+    """
+    result = predict_on_single_folder(
+        "cc2/DataCC2", 
+        infos["model"], 
+        extracteurs, 
+        config, 
+        infos["scaler"], 
+        infos['pca']
+    )
+
+
+    print(f"\n=== Prédictions terminées ===")
+    print(f"Nombre total d'images traitées : {len(result['predictions'])}")
+    
+    unique, counts = np.unique(result["y_pred"], return_counts=True)
+    stats = dict(zip(unique, counts))
+    print(f"Détections : Mer ({stats.get(1, 0)}) | Ailleurs ({stats.get(-1, 0)})")
+
+
+    export_predictions_txt(
+        filename="LAMNS.txt",
+        authors="Maxime Scotto, ARGUIMBAU Lucas, MAURIN Lucas (LAMS)",
+        algorithm="SVM (Support Vector Machine)",
+        hyperparams="kernel=rbf, C=5, gamma=scale",
+        descriptors="HOG + HSV + LBP",
+        predictions=result["predictions"],
+        err_emp=infos["err_emp"],
+        err_real=infos["err_real"]
+    )"""
     
 
     """
