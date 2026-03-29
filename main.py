@@ -4,7 +4,7 @@ from src.config import Econfig
 from src.models import get_algorithm
 from src.features import LBPExtractor, HOGExtractor, HSVHistoExtractor
 from src.pipeline import predict_on_single_folder, predict_on_folders, generateStats
-
+from src.utils import export_predictions_txt
 
 
 if __name__ == "__main__":
@@ -22,9 +22,9 @@ if __name__ == "__main__":
                      PCA_Active=True,
                      grid_search_active=True,
                      grid_search_params = {
-                        "C": [0.1, 1, 10],
+                        "C": [0.1,0.5, 1],
                         "kernel": ["rbf"],
-                        "gamma": ["scale",0.1,0.01]
+                        "gamma": ["scale",0.1,0.01,1,2]
                     },
                      size_Image=(128,128),
                      rotationImage = True,
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     
     # True  = Entraînement sur 80% de A, Test sur les 20% restants de A.
     # False = Entraînement sur 100% de A, Test sur le dataset B.
-    USE_SPLIT = True    
+    USE_SPLIT = False    
     infos = generateStats(config, use_split=USE_SPLIT)
 
     result = predict_on_folders("data/test/positives","data/test/negatives", 
@@ -52,6 +52,10 @@ if __name__ == "__main__":
     stats = dict(zip(unique, counts))
     print(f"Détections : Mer ({stats.get(1, 0)}) | Ailleurs ({stats.get(-1, 0)})")
 
+    print("\nConfusion matrix:")
+    print(result["confusion_matrix"])
+    print("\nClassification report:")
+    print(result["report"])
 
     export_predictions_txt(
         filename="LAMNS.txt",

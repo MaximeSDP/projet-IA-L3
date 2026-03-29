@@ -100,7 +100,7 @@ class LBPExtractor(Extractor):
     def extract(self, image_data: ImageData):
         img = image_data.resized_image
         img = rgb2gray(img)
-        img = img.astype(np.uint8)
+        img = (img * 255).astype(np.uint8)
 
         lbp = local_binary_pattern(img, P=self.P, R=self.R, method="uniform")
 

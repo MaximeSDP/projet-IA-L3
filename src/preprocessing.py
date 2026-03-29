@@ -29,6 +29,11 @@ def buildSampleFromPath(
         image = ImageData(path2 + "/" + path, -1)
         listImageData.append(image)
 
+    for image in listImageData:
+        image.resized_image = resizeImage(image.name_path, sizeImage[1], sizeImage[0])
+        image.X_histo = computeHisto(image.resized_image)
+        image.X_gradient = imageEdge(image)
+
     if rotation:
         print("Début création des images en rotation...")
         listImageData = CreateRotationImages(
@@ -36,11 +41,6 @@ def buildSampleFromPath(
         )
         print("fin de la création des images en rotation ...")
         print(f"Il y a {len(listImageData)} images dans le dataset")
-
-    for image in listImageData:
-        image.resized_image = resizeImage(image.name_path, sizeImage[1], sizeImage[0])
-        image.X_histo = computeHisto(image.resized_image)
-        image.X_gradient = imageEdge(image)
 
     return listImageData
 
@@ -51,19 +51,16 @@ def CreateRotationImages(
     """Crée des versions rotées des images."""
     try:
         if use_random_angles:
-            angle = [random.randint(15, 350) for _ in range(3)]
-        if not angle:
-            angle = [90, 180, 270]
-        print(f"angles de rotation des images : {angle}")
+            angles = [random.randint(15, 350) for _ in range(3)]
+        if not angles:
+            angles = [90, 180, 270]
+        print(f"angles de rotation des images : {angles}")
         rotated_images = []
         for image in listImage:
-            for angle in angles:
-                img = Image.open(str(image.name_path)).convert("RGB")
-                rotated_img = img.rotate(angle, expand=False)
+            for a in angles:
+                rotated_pil = image.resized_image.rotate(a, expand=False)
                 rotated_image = ImageData(image.name_path, image.y_true_class)
-                rotated_image.resized_image = ImageOps.pad(
-                    rotated_img, (300, 300), color=(0, 0, 0)
-                )
+                rotated_image.resized_image = rotated_pil
                 rotated_image.X_histo = computeHisto(rotated_image.resized_image)
                 rotated_image.X_gradient = imageEdge(rotated_image)
                 rotated_images.append(rotated_image)

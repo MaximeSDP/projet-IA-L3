@@ -38,7 +38,7 @@
 20236.jpg +1
 20240.jpg +1
 20247.jpg +1
-20255.jpg +1
+20255.jpg -1
 2192.jpg +1
 2214.jpg +1
 2412.jpg +1
@@ -63,7 +63,7 @@
 934.jpg +1
 936.jpg +1
 986.jpg +1
-11557.jpg -1
+11557.jpg +1
 11614.jpg +1
 120.jpg +1
 12193.jpg +1
@@ -73,22 +73,22 @@
 12451 - Copie.jpg -1
 12462 - Copie.jpg +1
 12500 - Copie.jpg -1
-12544 - Copie.jpg -1
+12544 - Copie.jpg +1
 12617 - Copie.jpg +1
 12649 - Copie.jpg -1
 12734 - Copie.jpg -1
 12741 - Copie.jpg -1
-1332 - Copie.jpg -1
+1332 - Copie.jpg +1
 153.jpg +1
 155.jpg -1
-1622 - Copie.jpg +1
+1622 - Copie.jpg -1
 17.jpg +1
 1760 - Copie.jpg +1
-1877 - Copie.jpg -1
+1877 - Copie.jpg +1
 2104 - Copie.jpg -1
-2108 - Copie.jpg -1
+2108 - Copie.jpg +1
 2605.jpg +1
-2609.jpg +1
+2609.jpg -1
 2615.jpg +1
 2618.jpg +1
 2635.jpg +1
@@ -115,7 +115,7 @@
 7886.jpg -1
 7899.jpg +1
 7916.jpg -1
-7932.jpg -1
+7932.jpg +1
 7940.jpg -1
 7947.jpg -1
 8183.jpg -1
@@ -123,6 +123,6 @@
 8545.jpg -1
 8737.jpg -1
 8913.jpg -1
-8984.jpg -1
-# EE = 0.00
-# ER = 0.01
+8984.jpg +1
+# EE = 0.05
+# ER = 0.10
