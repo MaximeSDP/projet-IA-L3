@@ -13,7 +13,7 @@ if __name__ == "__main__":
     - test moyenne sur x tentative : generateStats(config,x) ou x est le nombre de test
     - test une seule fois : createPipeline(config)
     """
-    extracteurs = [HSVHistoExtractor(),HOGExtractor(),LBPExtractor()]
+    extracteurs = [HSVHistoExtractor()]
     config = Econfig(path_correct="data/train/positives",
                      path_incorrect="data/train/negatives",
                      extractors= extracteurs,
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     infos = generateStats(config, use_split=USE_SPLIT)
 
     
-    result = predict_on_folders("CC2_trié/positives","CC2_trié/negatives", 
+    result = predict_on_folders("archive/CC2_old_sorted/positives","archive/CC2_old_sorted/negatives", 
         infos["model"], 
         extracteurs, 
         config, 
